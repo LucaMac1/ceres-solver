@@ -109,9 +109,9 @@ option(EIGENSPARSE "Enable Eigen as a sparse linear algebra library." ON)
 cmake_dependent_option(EIGENMETIS "Enable Eigen METIS support." ON EIGENSPARSE OFF)
 option(EXPORT_BUILD_DIR
   "Export build directory using CMake (enables external use without install)." OFF)
-option(BUILD_TESTING "Enable tests" ON)
+option(BUILD_TESTING "Enable tests" OFF)
 option(BUILD_DOCUMENTATION "Build User's Guide (html)" OFF)
-option(BUILD_EXAMPLES "Build examples" ON)
+option(BUILD_EXAMPLES "Build examples" OFF)
 option(BUILD_BENCHMARKS "Build Ceres benchmarking suite" ON)
 option(BUILD_SHARED_LIBS "Build Ceres as a shared library." OFF)
 option(PROVIDE_UNINSTALL_TARGET "Add a custom target to ease removal of installed targets" ON)
@@ -765,7 +765,7 @@ if (PROVIDE_UNINSTALL_TARGET)
   configure_file("${Ceres_SOURCE_DIR}/cmake/uninstall.cmake.in"
                  "${Ceres_BINARY_DIR}/cmake/uninstall.cmake"
                  @ONLY)
-  add_custom_target(uninstall
+  add_custom_target(uninstall_ceres
                     COMMAND ${CMAKE_COMMAND} -P ${Ceres_BINARY_DIR}/cmake/uninstall.cmake)
 endif()
 
